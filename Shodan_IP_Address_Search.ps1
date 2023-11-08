@@ -1,5 +1,5 @@
 # Import the list of keywords and IP ranges from the CSV file
-$keywords = Import-Csv -Path ".\Shodan API Scripts\input_keywords.csv"
+$keywords = Import-Csv -Path "Shodan API Scripts\input_keywords.csv"
 
 # Create an empty array to store the search results
 $results = @()
@@ -42,4 +42,4 @@ foreach ($keyword in $keywords) {
 }
 
 # Export the search results to a CSV file
-$results | Select-Object -Property Keyword, ip_str, port, @{Name="hostname"; Expression={$_.hostnames[0]}} | Export-Csv -Path ".\Shodan_Keyword_results.csv" -NoTypeInformation
+$results | Select-Object -Property Keyword, ip_str, port, @{Name="hostname"; Expression={$_.hostnames[0]}} | Export-Csv -Path "Shodan_Keyword_results.csv" -NoTypeInformation
